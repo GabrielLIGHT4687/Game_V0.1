@@ -1,7 +1,14 @@
-﻿using System;
+﻿
+
+
+
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using ItensClass;
+using System.IO;
+using System.Xml.Serialization;
+
 
 namespace ArmaduraClass;
 

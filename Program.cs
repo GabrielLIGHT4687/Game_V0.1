@@ -13,7 +13,15 @@ public static class Program
    public static void Main()
    {
 		
+		Console.WriteLine("\n\n\n\n\n\n\n\n\n\n");
+		
+		Console.WriteLine("fjdlsjs ");
+		Console.WriteLine("xjdjsxkdkdkdkdkdkksj");
 		Game game = new Game();
+		
+		Console.WriteLine("    ~"+ArmasDB.ArmasDBList[0].name);
+		
+		
 		
 		while(true)
 		{
@@ -57,7 +65,7 @@ public static class Program
 		}
 		
 		Console.WriteLine("\n\n\n\n\n\n Kapkapkapkpa");
-	   ArmaClass.ArmasDB.DBVerify();
+	   //ArmaClass.ArmasDB.DBVerify();
 		
 		//Game game = new Game();
 		//game.NewGame();

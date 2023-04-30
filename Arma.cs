@@ -2,6 +2,9 @@
 using System.Linq;
 using System.Collections.Generic;
 using ItensClass;
+using System.IO;
+using System.Xml.Serialization;
+
 
 
 
@@ -28,6 +31,11 @@ namespace ArmaClass;
 			
 		
 		}
+		
+		public Arma()
+		{
+			//nessesario para a serializacao
+		}
 	
 	
 	}
@@ -38,39 +46,87 @@ namespace ArmaClass;
 
 	public class ArmasDB 
 	{
+		
+		public static List<Arma> ArmasDBList = new List<Arma>(100);
 	
 	   public static void DBVerify()
 		{
-			if(1==2)
+			//int countForError =0;
+			XmlSerializer serializer = new XmlSerializer(typeof(List<Arma>));
+			
+				
+			string caminhoDiretorio = "../GameRPG";
+			string caminhoArquivo = Path.Combine(caminhoDiretorio, "ArmasDBList.xml");
+			//List<Arma> ArmasDB;
+	
+			bool VerifySucefullt = false;
+			for(int i=0; i<5; i++)
 			{
+				
+				if(VerifySucefullt == true)
+				{
 				// 1==2 é so pra preencher, vai ser ma verificacao se o arquivo existe
 				//se o arquivo ja existir
 				//apenas continua, verificacao completa
-				Console.WriteLine("arquivo de arma deu bom");
-			}
-			else{
+					
+					using (FileStream stream = new FileStream(caminhoArquivo, FileMode.Open))
+					{
+   					 ArmasDB.ArmasDBList = (List<Arma>)serializer.Deserialize(stream);
+					}
+				
+					
+					break;
+
+					Console.WriteLine("arquivo de arma deu bom");
+				}
+			
 				//criar um novo arquivo:
 			
-			
-		
-				List<Arma> armas = new List<Arma>();
-	
+				List<Arma> armasList = new List<Arma>();
 			   Arma espadaSolar = new Arma("espada solar",2.5,2.3,5.4,4.4,Itens.Elementos.Luz);
-			//	Arma outra1 = new Arma(2.3,2.9);
-			//	Arma outra2 = new Arma(2.2,2.4);
+			// Arma outra1 = new Arma(2.3,2.9);
+			// Arma outra2 = new Arma(2.2,2.4);
 				// ...
-		
-	   		armas.Add(espadaSolar);
+				armasList.Add(espadaSolar);
+				
+				
+				
+			
+
+				Directory.CreateDirectory(caminhoDiretorio);
+
+				
+				
+				using (FileStream stream = new FileStream(caminhoArquivo, FileMode.Create))
+				{
+    // Código de serialização aqui
+	 				serializer.Serialize(stream, armasList);
+				}
+				
+				
+				
+				
+				
+				if(File.Exists(caminhoArquivo))
+				{
+					//criado ou atualizado sucefull
+					VerifySucefullt = true;
+					
+					
+					
+				}
 			//	armas.Add(outra1);
 				//armas.Add(outra2);
 				
+				
 				Console.WriteLine("DEBUG: teste se as armas estao sendo criadas e seus valores atribuidos:\n Nome: {0}\n Ataque: {1}\n Elemento: {2}",espadaSolar.name, espadaSolar.ataque, espadaSolar.elemento);   
-	 		}
+	 		
        
 	//espadaSolar.ataque = 0.6;
 	//armas.Add(espadaSolar);     
 	 
        
  
+		}
 	}
 }
