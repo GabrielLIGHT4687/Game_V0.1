@@ -13,6 +13,9 @@ public static class Program
    public static void Main()
    {
 		
+		//MAIN é o menu do jogo, inicializa os principais processos
+		
+		
 		Console.WriteLine("\n\n\n\n\n\n\n\n\n\n");
 		
 		Console.WriteLine("fjdlsjs ");
@@ -76,7 +79,7 @@ public static class Program
 		
 		// chamar Game()
 		// nao sei bem como
-		Console.ReadLine();
+		//Console.ReadLine();
 
 		
    }
