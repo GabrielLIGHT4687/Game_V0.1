@@ -47,7 +47,7 @@ namespace ArmaClass;
 	public class ArmasDB 
 	{
 		
-		public static List<Arma> ArmasDBList = new List<Arma>(100);
+		public static List<Arma> ArmasDBList = new List<Arma>();
 	
 	   public static void DBVerify()
 		{
