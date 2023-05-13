@@ -16,7 +16,7 @@ public class Player
 	public double chanceEsquiva{get;set;}
 	
 	//so botei isso pra definir todos os status do player
-	// falta coisa pra caralho
+	// adicionar uma propriedade do tipo inventory
 	
 	
 	

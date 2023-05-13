@@ -1,6 +1,9 @@
-﻿using System;
+﻿
+using System;
 using System.Linq;
 using ArmaClass;
+using PlayerClass;
+using SaveClass;
 
 
 
@@ -11,45 +14,84 @@ namespace GameClass;
 
 class Game
 {
-	
-	// game tem as propriedades de Player, de coisas da run esolida e etc
-   // propriedade Id para se referir ao save
+
+	public Player playerGame;
+	public int IdGame = 1;
+	public int IndexSaveGame = 0;
+	public string nameGame="PADRAO";
+	public int areaMaxOpen = 1;
 		
 	
-	
-	public Game()
+	public Game(int IdGame, string nameGame)
 	{
+		if(IdGame > 0 && IdGame < 4)
+		{
+		 	this.IdGame = IdGame;
+			 this.IndexSaveGame = IdGame-1;
+		}
 		
-		//verificacoes contra erros, e ATUALIZACOES.
+		//fazer verificacao e filtro da string
+		this.nameGame = nameGame;
 		
+		this.playerGame = new Player();
+		this.areaMaxOpen = 1;
+			
+		SavesVerify.SaveVerify();
 		ArmasDB.DBVerify();
-	   //ArmasDB.DBVerify();
 		//EnemyDB.DBVerify();
 	}
+	public  Game()
+   {
+		// construtor sem parametros para o continue rodar
+		
+		//igualar as verificacoes entre o newgame
+		SavesVerify.SaveVerify();
+		ArmasDB.DBVerify();
+		
+	}
+
+	
 	public void NewGame()
 	{
-		//LEMBRAR de verificar se a lista de saves ja esta completa
 		
-		Console.WriteLine(" chamou newNew");
-		// fazer alguma forma de save kkk sei la como
-		GameContinue();
+		SavesVerify.NewSave(this.IdGame,this.IndexSaveGame, this.nameGame,this.areaMaxOpen,this.playerGame);
+		
+		Console.WriteLine(" chamou newGame");
+		
+		GameSave();
+		GameContinue(this.IdGame);
+		
 	}
 	
 	//vai ter um parameteo enum, para escolher 1,2 ou 3, os saves
-	public void GameContinue()
+	public void GameContinue(int Idgame)
 	{
 		Console.WriteLine("chamou continue");
 		
-		//carregar o save fazendo as propriedades do save passar para a instancia atual de game
-		//carregar um objeto Player
-		//
+		if(Idgame > 0 && Idgame <4)
+		{
+			this.IndexSaveGame = Idgame-1; 
+			Save SaveAtual = SaveClass.SavesVerify.savesList[this.IndexSaveGame];
+		
+			this.nameGame = SaveAtual.nameSave;
+			this.playerGame = SaveAtual.playerSave;
+			this.IdGame = SaveAtual.IdSave;
+			this.areaMaxOpen = SaveAtual.areaMaxOpen;
+		
+		}
+		else{
+			//deu ruim, talvez fazer retornar false ou true
+		}
+		
 	}
 	
-	//passar o objeto atual de game
-	//verificar a propriedade Id, para saber o slot certo do save
 	public void GameSave()
 	{
+		
+		SavesVerify.Saved();
+		//Save save = lista...[IdSave];
 		// salvar game na lista de save
+		//salvar apenas na parte atual da lista, exemplo, entrou no 3, salva no 3.
 	}
 	
 	

@@ -35,6 +35,8 @@ namespace ArmaClass;
 		public Arma()
 		{
 			//nessesario para a serializacao
+			// metodo que atribui, assim como no abandoned, mas relacionado a listaDB
+			
 		}
 	
 	
@@ -51,7 +53,7 @@ namespace ArmaClass;
 	
 	   public static void DBVerify()
 		{
-			//int countForError =0;
+			
 			XmlSerializer serializer = new XmlSerializer(typeof(List<Arma>));
 			
 				
@@ -65,9 +67,7 @@ namespace ArmaClass;
 				
 				if(VerifySucefullt == true)
 				{
-				// 1==2 é so pra preencher, vai ser ma verificacao se o arquivo existe
-				//se o arquivo ja existir
-				//apenas continua, verificacao completa
+				
 					
 					using (FileStream stream = new FileStream(caminhoArquivo, FileMode.Open))
 					{
@@ -77,54 +77,35 @@ namespace ArmaClass;
 					
 					break;
 
-					Console.WriteLine("arquivo de arma deu bom");
+					//Console.WriteLine("arquivo de arma deu bom");
 				}
 			
 				//criar um novo arquivo:
 			
 				List<Arma> armasList = new List<Arma>();
-			   Arma espadaSolar = new Arma("espada solar",2.5,2.3,5.4,4.4,Itens.Elementos.Luz);
+			   Arma espadaSolar = new Arma("espada solar",3.5,2.3,5.4,4.4,Itens.Elementos.Luz);
 			// Arma outra1 = new Arma(2.3,2.9);
 			// Arma outra2 = new Arma(2.2,2.4);
 				// ...
 				armasList.Add(espadaSolar);
 				
 				
-				
-			
-
 				Directory.CreateDirectory(caminhoDiretorio);
-
-				
-				
 				using (FileStream stream = new FileStream(caminhoArquivo, FileMode.Create))
 				{
-    // Código de serialização aqui
+                // Código de serialização aqui
 	 				serializer.Serialize(stream, armasList);
 				}
-				
-				
-				
-				
 				
 				if(File.Exists(caminhoArquivo))
 				{
 					//criado ou atualizado sucefull
 					VerifySucefullt = true;
-					
-					
-					
+						
 				}
 			//	armas.Add(outra1);
 				//armas.Add(outra2);
 				
-				
-				Console.WriteLine("DEBUG: teste se as armas estao sendo criadas e seus valores atribuidos:\n Nome: {0}\n Ataque: {1}\n Elemento: {2}",espadaSolar.name, espadaSolar.ataque, espadaSolar.elemento);   
-	 		
-       
-	//espadaSolar.ataque = 0.6;
-	//armas.Add(espadaSolar);     
-	 
        
  
 		}

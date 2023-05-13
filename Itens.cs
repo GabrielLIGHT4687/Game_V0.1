@@ -18,10 +18,9 @@ namespace ItensClass;
 			Sombra,
 		
 		};
+		
 		public Elementos elemento = Elementos.NonMage;
 	
-		
-	 
     }     
         
 
