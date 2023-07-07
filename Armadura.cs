@@ -28,6 +28,11 @@ public class Armadura : Itens
 			this.elemento = elemento;
 			
 		}
+		
+		public Armadura()
+		{
+			
+		}
 		 public class ArmadurasDB
 		 {
 		 	//mais ou menos o mesmo funcionamento do DB das armas

@@ -12,7 +12,7 @@ namespace ItensClass;
 			NonMage,
 			Agua,
 			Terra,
-			Foto,
+			Fogo,
 			Ar,
 			Luz,
 			Sombra,
