@@ -16,12 +16,13 @@ class Game
 {
 
 	public Player playerGame;
+	
 	public int IdGame = 1;
 	public int IndexSaveGame = 0;
 	public string nameGame="PADRAO";
 	public int areaMaxOpen = 1;
 		
-	
+	////ArmasDB armasdb = new ArmasDB();
 	public Game(int IdGame, string nameGame)
 	{
 		if(IdGame > 0 && IdGame < 4)
@@ -37,16 +38,18 @@ class Game
 		this.areaMaxOpen = 1;
 			
 		SavesVerify.SaveVerify();
-		ArmasDB.DBVerify();
+		//ArmasDB.DBVerify();
 		//EnemyDB.DBVerify();
 	}
+	// é chamado toda vez q o jogo inicia, ent serve para carregar recursos
 	public  Game()
    {
 		// construtor sem parametros para o continue rodar
 		
 		//igualar as verificacoes entre o newgame
+	  
 		SavesVerify.SaveVerify();
-		ArmasDB.DBVerify();
+		ArmasDB.iniciarArmaDB();
 		
 	}
 

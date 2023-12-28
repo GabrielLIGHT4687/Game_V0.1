@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
+
 namespace SystemTurnClass;
 
 public class SystemTurn 

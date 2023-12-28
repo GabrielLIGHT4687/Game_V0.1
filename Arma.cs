@@ -13,22 +13,22 @@ namespace ArmaClass;
 	public class Arma : Itens
 	{
 		//public string name = "NonName";
-		public double ataque = 4.6;
-		public double ataqueMagico = 0.0;
-		public double chanceCritico = 0.3;
-		public double defesa = 0.7;
+		
 		//public Elementos elemento = Elementos.NonMage;
 	
 	
-	   public Arma(string name,double ataque,double ataqueMagico,double chanceCritico,double defesa,Elementos elemento)
+	   public Arma(string name,double vida, double mana, double ataque,double ataqueMagico,double defesa,double defesaMagica,double chanceCritico, double agilidade,Elementos elemento)
 		{
 			this.name = name;
-			this.ataque = ataque;
-			this.ataqueMagico = ataqueMagico;
+			this.dano = ataque;
+			this.danoMagico = ataqueMagico;
 			this.chanceCritico = chanceCritico;
 			this.defesa = defesa;
 			this.elemento = elemento;
 			
+			//adicionar uma lista de numeros, referente a habilidsdes q essa arma libera
+			// como diferentes tipos de ataques e magias. q serao desbloqueadas no player
+			// ou fazer de outro jeito mais eficiente com bools msm
 		
 		}
 		
@@ -41,12 +41,49 @@ namespace ArmaClass;
 	
 	
 	}
+	
+/*	public class ArmasDB 
+	{
+		public static List<Arma> ArmasDBList = new List<Arma>();
+	   public void iniciarArmaDB()
+		{
+		
+	     Arma espadaSolar = new Arma("espada solar",3.5,2.3,5.4,4.4,Itens.Elementos.Luz);
+	    
+		  ArmasDBList.Add(espadaSolar);
+		}
+	
+	}*/
 
+
+   public static class ArmasDB 
+	{
+		public static List<Arma> ArmasDBList = new List<Arma>();
+	   public static void iniciarArmaDB()
+		{
+		             										//	v     m    d   dm   d     dm   cri	ag	
+	     Arma espadaSolar = new Arma("espada Solar", 0.0, 0.0, 3.5, 2.3, 4.4, 1.0, 5.4, 0.0, Itens.Elementos.Luz);
+	     Arma Sureler = new Arma("espada Sureler", 0.0, 0.0, 3.5, 2.3, 3.3, 7.9, 5.4, 0.0, Itens.Elementos.Luz);
+		  Arma Blastus = new Arma("espada Blastus", 0.0, 0.0, 3.5, 2.3, 5.4, 4.4, 1.0, 0.0, Itens.Elementos.Fogo);
+		  Arma Nieth = new Arma("espada Nieth", 0.0, 0.0, 3.5, 2.3, 5.4, 4.4, 1.0, 0.0, Itens.Elementos.Sombra);
+		  Arma Ethera = new Arma("espada Ethera", 0.0, 0.0, 3.5, 2.3, 5.4, 4.4, 1.0, 0.0, Itens.Elementos.Terra);
+		  Arma Furtsh = new Arma("espada Furtsh", 0.0, 0.0, 3.5, 2.3, 5.4, 4.4, 1.0, 0.0, Itens.Elementos.Ar);
+		  
+		  ArmasDBList.Add(espadaSolar);
+		  ArmasDBList.Add(Sureler);
+		  ArmasDBList.Add(Blastus);
+		  ArmasDBList.Add(Nieth);
+		  ArmasDBList.Add(Ethera);
+		  ArmasDBList.Add(Furtsh);
+		}
+	
+	}
 
 	
 
 
-	public class ArmasDB 
+	/*public class ArmasDB 
+	
 	{
 		
 		public static List<Arma> ArmasDBList = new List<Arma>();
@@ -108,6 +145,6 @@ namespace ArmaClass;
 				
        
  
-		}
-	}
-}
+		   }
+	  }
+   }*/

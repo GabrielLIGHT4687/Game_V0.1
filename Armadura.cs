@@ -19,7 +19,7 @@ public class Armadura : Itens
 		public double chanceEsquiva{get;set;}   
       
 		
-		public Armadura(string name, double defesa, double defesaMagica, double chanceEsquiva, Elementos elemento)
+		public Armadura(string name, double vida, double mana, double dano, double danoMagico, double defesa, double defesaMagica,double chanceCritico, double agilidade, Elementos elemento)
 		{
 			this.name = name;
 			this.defesa = defesa;

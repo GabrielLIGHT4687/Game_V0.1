@@ -20,7 +20,7 @@ public static class Program
 		Game Game = new Game();
       //MAIN é o menu do jogo, inicializa os principais processos
 		
-		ArmasDB armaDB = new ArmasDB();
+		//ArmasDB armaDB = new ArmasDB();
 		Console.WriteLine("\n\n\n\n\n\n\n\n\n\n");
 		Player player = new Player();
 		Console.WriteLine("fjdlsjs ");
@@ -52,34 +52,59 @@ public static class Program
 
 				Console.WriteLine("{0,33}","NEW GAME");
 				Console.WriteLine("=======================================");
-				Console.WriteLine("Save(1) "+"{0,20}",SavesVerify.savesList[0]);
+				Console.WriteLine("Save(1) "+"{0,20}",SavesVerify.savesList[0].nameSave);
 				  //  Save(1) {0}\n Save(2) {1}\n Save(3) {2}", SavesVerify.savesList[0], SavesVerify.savesList[1], SavesVerify.savesList[2]);
 				Console.WriteLine("=======================================\n\n\n");
 				
-				Console.Write("Deseja escrever sobre o Save:");
-				int idGameSave = Int32.Parse(Console.ReadLine());
-				Console.Write("Nome do Save(4 letras):");
-				string nameGame = Console.ReadLine();
+				while(true)
+				{
+					
+					Console.Write("Deseja escrever sobre o Save:");
+					int idGameSave = Int32.Parse(Console.ReadLine());
+					
+					//usar trycatch 
+					if(idGameSave >=1 && idGameSave <=3)
+					{		
+						Console.Write("Nome do Save(4 letras):");
+						string nameGame = Console.ReadLine();
 				
-				Game gameNew = new Game(idGameSave,nameGame);
-				gameNew.NewGame();
-				Game = gameNew;
-				
+						Game gameNew = new Game(idGameSave,nameGame);
+						gameNew.NewGame();
+						Game = gameNew;
+					
 				//int index = Int32.Parse(Console.ReadLine());
 				//Console.WriteLine(SavesVerify.savesList[index-1].texto);
+						break;
+					}
+					else{
+						Console.WriteLine("Id invalido, escolha 1 , 2 ou 3");
+					}
+				}
 				break;
 			}
 			
 			else if(navOption == "2" || navOption == "continue")
 			{
 				
-				Game gameContinue = new Game();
-				Console.Write("Carregar o save: ");
-				int id = Convert.ToInt32(Console.ReadLine());
-				gameContinue.GameContinue(id);
-				Game = gameContinue;
+				while(true)
+				{
+					Game gameContinue = new Game();
+					Console.Write("Carregar o save: ");
+					int id = Convert.ToInt32(Console.ReadLine());
+					if(id>=1 && id<=3)
+					{
+						gameContinue.GameContinue(id);
+						Game = gameContinue;
 				
-				break;
+						break;
+					}
+					else{
+						Console.Clear();
+						Console.WriteLine("numero de save invalido. tente novamente");
+				
+					}
+			   }
+				break;	
 			}
 			
 			else{
@@ -91,7 +116,8 @@ public static class Program
 		Console.WriteLine("Nome do save: "+ Game.nameGame);
 		
 		//Console.WriteLine(SavesVerify.savesList[0].IdSave);
-		Console.WriteLine(ArmasDB.ArmasDBList[0].name);
+		
+		Console.WriteLine(ArmasDB.ArmasDBList[1].name);
 		
 		
    }
